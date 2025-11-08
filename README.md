@@ -55,10 +55,6 @@ npm install
 
 Create a new file in the root directory of your project named .env and add your Gemini API key like this:
 ```bash
-touch .env
-```
-Then open .env and paste your API key:
-```bash
 GEMINI_API_KEY=YourRealGeminiKeyHere
 ```
 ### ⚙️ Step 4: Run the Server
