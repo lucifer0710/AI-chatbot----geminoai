@@ -121,3 +121,22 @@ h2 {
     padding: 10px 14px;
   }
 }
+code {
+  background: #1e1e1e;
+  color: #04b304;
+  font-family: 'Courier New', monospace;
+  padding: 3px 5px;
+  border-radius: 5px;
+}
+
+pre {
+  background: #1e1e1e;
+  color: #00e0ff;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
