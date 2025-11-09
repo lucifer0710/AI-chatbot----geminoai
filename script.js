@@ -58,13 +58,30 @@ function appendMessage(text, sender) {
   const msg = document.createElement("div");
   msg.classList.add("message", sender);
 
-  // Convert newlines to <br> for better readability
-  msg.innerHTML = text
-    .replace(/\n/g, "<br>")
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
-    .replace(/\*(.*?)\*/g, "<em>$1</em>"); // italics
+  // Detect and render code blocks like ```js ... ```
+  const formatted = text
+    // Detect ```lang\n code \n``` patterns and wrap in <pre><code>
+    .replace(/```([\s\S]*?)```/g, (match, code) => {
+      return `<pre><code>${escapeHTML(code.trim())}</code></pre>`;
+    })
+    // Convert single backtick `inline code`
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    // Apply markdown-style bold/italic
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.*?)\*/g, "<em>$1</em>")
+    // Replace newlines with <br> (for normal text)
+    .replace(/\n/g, "<br>");
 
+  msg.innerHTML = formatted;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
-  return msg; // for removing 'Thinking...'
+  return msg;
+}
+
+// Helper to safely escape HTML tags inside code blocks
+function escapeHTML(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
