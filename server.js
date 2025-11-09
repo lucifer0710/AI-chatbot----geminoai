@@ -107,10 +107,7 @@ app.get((req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-// ✅ Export for Vercel (instead of app.listen)
-module.exports = app;
-
-// ✅ Optional: allow local testing
+// ✅ Allow local testing
 if (require.main === module) {
   app.listen(3000, () =>
     console.log("✅ Local server running on http://localhost:3000")
