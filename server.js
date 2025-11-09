@@ -8,6 +8,7 @@ const fetch = require("node-fetch");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(__dirname));
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 console.log("Loaded Gemini API Key:", GEMINI_API_KEY ? "✅ Found" : "❌ Missing");
