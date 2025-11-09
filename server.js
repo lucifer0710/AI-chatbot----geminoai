@@ -8,7 +8,7 @@ const fetch = require("node-fetch");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname)); // ✅ Serve index.html, style.css, script.js
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 console.log("Loaded Gemini API Key:", GEMINI_API_KEY ? "✅ Found" : "❌ Missing");
@@ -102,4 +102,17 @@ app.post("/api/gemini", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("✅ Server running on http://localhost:3000"));
+// ✅ Serve index.html on root route (fixes "Cannot GET /")
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+// ✅ Export for Vercel (instead of app.listen)
+module.exports = app;
+
+// ✅ Optional: allow local testing
+if (require.main === module) {
+  app.listen(3000, () =>
+    console.log("✅ Local server running on http://localhost:3000")
+  );
+}
