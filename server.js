@@ -103,7 +103,7 @@ app.post("/api/gemini", async (req, res) => {
 });
 
 // ✅ Serve index.html on root route (fixes "Cannot GET /")
-app.get("*", (req, res) => {
+app.get((req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
