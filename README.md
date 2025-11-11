@@ -1,14 +1,14 @@
 # 🤖 AI Chatbot — Gemini-Powered Assistant
 
 An interactive AI chatbot built using **Node.js**, **Express**, and the **Google Gemini API**.  
-It intelligently selects the best Gemini model based on the user’s prompt — whether it’s text, image, or audio generation.
+It intelligently selects the best Gemini model based on the user’s prompt — whether it’s text, image, or code generation.
 
 ---
 
 ## ✨ Features
 - 💬 Real-time chat interface (frontend + backend)
 - ⚡ Automatic Gemini model selection based on prompt
-- 🧠 Supports **text**, **image**, and **voice** generation
+- 🧠 Supports **text**, **image**, and **code** generation
 - 🧩 Secure environment variable handling with `.env`
 - 🖥️ Fully local setup — no deployment required
 - 🎨 Clean and responsive UI
